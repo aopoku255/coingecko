@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import logo from '../assets/icons/logo.svg';
+import logo from "../assets/icons/logo.svg";
 
-import './Navbar.scss';
+import "./Navbar.scss";
 
 export default function Navbar() {
   return (
@@ -14,7 +14,7 @@ export default function Navbar() {
       <Link to="/" className="navbar-brand">
         <img
           src={logo}
-          width="140"
+          width="40"
           className="d-inline-block align-top"
           alt="logo"
         />
