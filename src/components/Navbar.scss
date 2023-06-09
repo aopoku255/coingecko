@@ -5,4 +5,14 @@
   a {
     text-decoration: none;
   }
+
+  .active{
+    color: red;
+  }
+}
+
+
+.search:focus{
+  border: 5px solid #fff;
+  outline: 5px solid #fff;
 }

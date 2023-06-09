@@ -1,23 +1,23 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import PageWrapper from '../hoc/PageWrapper';
-import colors from '../helpers/colors';
+import React, { useEffect, useLayoutEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import PageWrapper from "../hoc/PageWrapper";
+import colors from "../helpers/colors";
 
-import './Detail.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCoinsThunk, toggleFavorite } from '../redux/reducers/coins';
-import CustomChart from '../components/detail/CustomChart';
-import FilterDuration from '../components/detail/FilterDuration';
-import { selectExchangeRates } from '../redux/reducers/exchangeRates';
-import Loading from '../components/Loading';
-import { formatDollar } from '../helpers/currency';
+import "./Detail.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCoinsThunk, toggleFavorite } from "../redux/reducers/coins";
+import CustomChart from "../components/detail/CustomChart";
+import FilterDuration from "../components/detail/FilterDuration";
+import { selectExchangeRates } from "../redux/reducers/exchangeRates";
+import Loading from "../components/Loading";
+import { formatDollar } from "../helpers/currency";
 
 export default function Detail() {
   let { coin_id: coinId } = useParams();
 
   const coin = useSelector((state) =>
-    state.coins.data.find((coin) => coin.id === coinId),
+    state.coins.data.find((coin) => coin.id === coinId)
   );
 
   const exchangeRates = useSelector(selectExchangeRates);
@@ -31,7 +31,7 @@ export default function Detail() {
 
   useLayoutEffect(() => {
     document.title =
-      'Bitcoin price, BTC price index, chart, and info | CoinGecko clone';
+      "Bitcoin price, BTC price index, chart, and info | CoinGecko clone";
   }, []);
 
   useEffect(() => {
@@ -40,6 +40,8 @@ export default function Detail() {
     }
   }, [coin, coinId, dispatch]);
 
+  const theme = useSelector((state) => state.theme.value);
+
   return (
     <PageWrapper>
       {coin ? (
@@ -47,9 +49,9 @@ export default function Detail() {
           <div className="w-100 px-5">
             <div className="py-3">
               <Link to="/">
-                <span style={{ color: colors.green }}>Coins</span>{' '}
+                <span style={{ color: colors.green }}>Coins</span>{" "}
               </Link>
-              <span style={{ color: colors.green }}>{'>'}</span> {coinId}
+              <span style={{ color: colors.green }}>{">"}</span> {coinId}
             </div>
 
             <div className="d-flex flex-wrap justify-content-between mb-3">
@@ -77,18 +79,18 @@ export default function Detail() {
                 onClick={() => dispatch(toggleFavorite(coin.id))}
               >
                 <i
-                  className={`favorite ${
-                    coin.isFavorite ? 'fas text-warning' : 'far'
+                  className={`${theme ? "text-white" : ""}  favorite ${
+                    coin.isFavorite ? "fas text-warning" : "far"
                   } fa-star`}
                 ></i>
               </button>
 
               <span style={{ color: colors.grey }}>
-                {priceRate ? 1 / priceRate : 'unknown'} BTC
+                {priceRate ? 1 / priceRate : "unknown"} BTC
               </span>
             </div>
 
-            <FilterDuration days={days} setDays={setDays} />
+            <FilterDuration days={days} setDays={setDays} theme={theme} />
 
             <CustomChart coinId={coin.id} days={days} />
           </div>

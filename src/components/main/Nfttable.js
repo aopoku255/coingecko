@@ -13,7 +13,7 @@ import colors from "../../helpers/colors";
 
 import "./Table.scss";
 
-export default function Table({ theme }) {
+export default function Nfttable({ theme }) {
   let coins = useSelector(selectCoins);
   const activeFilter = useSelector(selectActiveFilter);
   if (activeFilter === "favorited")
@@ -166,7 +166,7 @@ export default function Table({ theme }) {
           ) : (
             [...coins].map((coin, i) => (
               <tr key={coin.id}>
-                <td className="">
+                <td className="text-center">
                   <i
                     className={`favorite ${
                       coin.isFavorite ? "fas text-warning" : "far"
@@ -174,7 +174,7 @@ export default function Table({ theme }) {
                     onClick={() => dispatch(toggleFavorite(coin.id))}
                   ></i>
                 </td>
-                <td className="">{coin.number}</td>
+                <td className="text-center">{coin.number}</td>
                 <td>
                   <img src={coin.logo} width="18px" alt="" />{" "}
                   <Link to={`/coins/${coin.id}`}>
