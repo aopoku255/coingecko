@@ -16,6 +16,7 @@ import {
 import { formatDollar } from "../helpers/currency";
 import FilterButtons from "../components/main/FilterButtons";
 import Table from "../components/main/Table";
+import { Modal } from "bootstrap";
 
 export default function Main() {
   const marketCapPercentage = useSelector(selectMarketCapPercentage);
@@ -73,14 +74,121 @@ export default function Main() {
               Billion. Bitcoin dominance is at <span>{btcDominance}</span>% and
               Ethereum dominance is at <span>{ethDominance}</span>%. Andtecx is
               now tracking <span>{coins}</span> cryptocurrencies. The largest
-              gainers in the industry right now are Polkadot Ecosystem and
-              Algorand Ecosystem cryptocurrencies.
+              gainers in the industry right now are{" "}
+              <span className="text-info">Polkadot Ecosystem</span> and{" "}
+              <span className="span text-info">Algorand Ecosystem</span>{" "}
+              cryptocurrencies.
             </div>
           </p>
+          <div className="show-stats my-4">
+            <div className="row">
+              <div className="col">
+                <div
+                  className="card border-0 shadow-sm d-flex justify-content-center align-items-start p-3 show-start-card"
+                  style={{ height: "5rem" }}
+                >
+                  <div className="bar red-bar"></div>
+                  <div className="d-flex align-items-center mt-3">
+                    <span className="text-info" style={{ fontSize: "15px" }}>
+                      {isNaN(marketCap) ? marketCap : formatDollar(marketCap)}
+                    </span>
+                    <span
+                      className={marketCapPercentageColorClass + "ml-1"}
+                      style={{ fontSize: "12px" }}
+                    >
+                      {marketCapPercentage}%
+                      <i className={marketCapPercentageClasses}></i>
+                    </span>
+                  </div>
+                  <p className="small" style={{ fontSize: "14px" }}>
+                    Market Capitalization
+                  </p>
+                </div>
+              </div>
+              <div className="col">
+                <div
+                  className="card border-0 shadow-sm d-flex justify-content-center align-items-start p-3 show-start-card"
+                  style={{ height: "5rem" }}
+                >
+                  <div className="bar blue-bar"></div>
+                  <div className="d-flex align-items-center mt-3">
+                    <span className="text-info" style={{ fontSize: "15px" }}>
+                      {isNaN(vol24h) ? vol24h : formatDollar(vol24h)}
+                    </span>
+                  </div>
+                  <p className="small" style={{ fontSize: "14px" }}>
+                    24h Trading Volume
+                  </p>
+                </div>
+              </div>
+              <div className="col">
+                <div
+                  className="card border-0 shadow-sm d-flex justify-content-center align-items-start p-3 show-start-card"
+                  style={{ height: "5rem" }}
+                >
+                  <div className="bar deep-bar"></div>
+                  <div className="d-flex align-items-center mt-3">
+                    <span className="text-info" style={{ fontSize: "15px" }}>
+                      {btcDominance}%
+                    </span>
+                  </div>
+                  <p className="small" style={{ fontSize: "14px" }}>
+                    Bitcoin Market Cap Dominance
+                  </p>
+                </div>
+              </div>
+              <div className="col">
+                <div
+                  className="card border-0 shadow-sm d-flex justify-content-center align-items-start p-3 show-start-card"
+                  style={{ height: "5rem" }}
+                >
+                  <div className="bar light-bar"></div>
+                  <div className="d-flex align-items-center mt-3">
+                    <span className="text-info" style={{ fontSize: "15px" }}>
+                      {coins?.toLocaleString()}
+                    </span>
+                  </div>
+                  <p className="small" style={{ fontSize: "14px" }}>
+                    Number of Coins
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="w-100 px-5">
           <FilterButtons theme={theme} />
           <Table theme={theme} />
+        </div>
+        <div className="w-100 px-5">
+          <div>
+            <h4 className="font-weight-bold">What is Crypto Market Cap? </h4>
+            <p className="small text-secondary">
+              Crypto market cap is the total value of all the coins of a
+              particular cryptocurrency that have been mined or are in
+              circulation. Market capitalization is used to determine the
+              ranking of cryptocurrencies. The higher the market cap of a
+              particular crypto coin, the higher its ranking and share of the
+              market. Crypto market cap is calculated by multiplying the total
+              number of coins in circulation by its current price. For instance,
+              to calculate the market cap of Ethereum, all you need to do is
+              multiply the total number of Ethereum in circulation by the
+              current price of one Ethereum and you will get its market cap.
+            </p>
+          </div>
+          <div className="mb-5">
+            <h6 className="font-weight-bold">
+              How to compare Cryptocurrencies Market Cap?
+            </h6>
+            <p className="text-secondary small">
+              Crypto market cap can be divided into three categories:
+            </p>
+            <ul className="text-secondary small">
+              <li>Large-cap cryptocurrencies (>$10 billion)</li>
+              <li>Mid-cap Cryptocurrencies ($1 billion - $10 billion)</li>
+              <li>Small-cap cryptocurrencies $1 billion</li>
+            </ul>
+          </div>
         </div>
       </div>
     </PageWrapper>

@@ -4,3 +4,28 @@
     color: rgb(80, 80, 80);
   }
 }
+
+.show-start-card{
+  position: relative;
+}
+
+.bar{
+  position: absolute;
+  height: 100%;
+  width: 0.5rem;
+  left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.red-bar{
+  background-color: tomato; 
+}
+.blue-bar{
+  background-color: #28a745; 
+}
+.deep-bar{
+  background-color: #343a40; 
+}
+.light-bar{
+  background-color: #6c757d; 
+}

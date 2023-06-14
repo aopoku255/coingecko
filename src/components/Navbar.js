@@ -108,7 +108,11 @@ export default function Navbar(props) {
           </ul>
         </div>
         <div>
-          <span className="mr-3 fw-bold">Login</span>
+          <Link
+            className={`mr-3 fw-bold ${theme ? "text-white" : "text-dark"}`}
+          >
+            Login
+          </Link>
           <span
             className={`btn btn-sm mr-3 ${theme ? "btn-light" : "btn-dark"}`}
           >
