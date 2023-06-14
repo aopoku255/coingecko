@@ -1,15 +1,16 @@
-import React, { useLayoutEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useLayoutEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import 'jquery/dist/jquery.min.js';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import "jquery/dist/jquery.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-import Main from './pages/Main';
-import { fetchGlobalsThunk } from './redux/reducers/globals';
-import { fetchCoinsThunk } from './redux/reducers/coins';
-import { fetchExchangeRatesThunk } from './redux/reducers/exchangeRates';
-import Detail from './pages/Detail';
+import Main from "./pages/Main";
+import { fetchGlobalsThunk } from "./redux/reducers/globals";
+import { fetchCoinsThunk } from "./redux/reducers/coins";
+import { fetchExchangeRatesThunk } from "./redux/reducers/exchangeRates";
+import Detail from "./pages/Detail";
+import Markets from "./pages/Markets";
 
 function App() {
   const [globalsFetched, setGlobalsFetched] = useState(false);
@@ -39,6 +40,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Main />
+        </Route>
+        <Route exact path="/markets">
+          <Markets />
         </Route>
         <Route path="/coins/:coin_id">
           <Detail />

@@ -40,9 +40,9 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <a href="/" className="nav-link disabled">
+            <Link to="/markets" className="nav-link ">
               Markets
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a href="/" className="nav-link disabled">
