@@ -1,9 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-<<<<<<< HEAD
-import { useDispatch } from "react-redux";
-=======
 import { useDispatch, useSelector } from "react-redux";
->>>>>>> d61ba5893c41eeaaba75c2a6cf56a97e18eac97e
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "jquery/dist/jquery.min.js";
@@ -14,11 +10,7 @@ import { fetchGlobalsThunk } from "./redux/reducers/globals";
 import { fetchCoinsThunk } from "./redux/reducers/coins";
 import { fetchExchangeRatesThunk } from "./redux/reducers/exchangeRates";
 import Detail from "./pages/Detail";
-<<<<<<< HEAD
-import Markets from "./pages/Markets";
-=======
 import Nft from "./pages/Nft";
->>>>>>> d61ba5893c41eeaaba75c2a6cf56a97e18eac97e
 
 function App() {
   const [globalsFetched, setGlobalsFetched] = useState(false);
