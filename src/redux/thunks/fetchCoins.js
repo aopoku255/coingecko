@@ -6,8 +6,6 @@ export const fetchCoins = async () => {
       "/coins/markets?vs_currency=usd&per_page=50&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d"
     );
 
-    console.log(response);
-
     const coins = [];
 
     for (let i = 0; i < response.data.length; i++) {

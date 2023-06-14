@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Chart from 'chart.js/auto';
-import colors from '../../helpers/colors';
-import axios from '../../app/axios';
-import { formatDollar } from '../../helpers/currency';
+import React, { useEffect, useRef, useState } from "react";
+import Chart from "chart.js/auto";
+import colors from "../../helpers/colors";
+import axios from "../../app/axios";
+import { formatDollar } from "../../helpers/currency";
 
 export default function CustomChart({ coinId, days }) {
   const ref = useRef(null);
@@ -16,7 +16,7 @@ export default function CustomChart({ coinId, days }) {
         const labels = [];
         const prices = [];
         response.forEach((el) => {
-          labels.push('');
+          labels.push("");
           const date = new Date(el[0]);
           prices.push({
             x: date,
@@ -28,7 +28,7 @@ export default function CustomChart({ coinId, days }) {
           labels,
           datasets: [
             {
-              label: 'Price',
+              label: "Price",
               data: prices,
               borderColor: colors.blue,
               backgroundColor: colors.blue,
@@ -40,29 +40,29 @@ export default function CustomChart({ coinId, days }) {
           chart.config.data = data;
           chart.update();
         } else {
-          const ctx = ref.current.getContext('2d');
+          const ctx = ref.current.getContext("2d");
           const config = {
-            type: 'line',
+            type: "line",
             data: data,
             options: {
               responsive: true,
               interaction: {
                 intersect: false,
-                mode: 'index',
+                mode: "index",
               },
               plugins: {
                 legend: {
                   display: false,
                 },
                 tooltip: {
-                  mode: 'index',
+                  mode: "index",
                   callbacks: {
                     title: function (tooltipItems) {
                       const date = tooltipItems[0].raw.x;
                       return `${date.toDateString()}, ${date.toLocaleTimeString()}`;
                     },
                     label: function (tooltipItem) {
-                      return 'Price: ' + formatDollar(tooltipItem.parsed.y);
+                      return "Price: " + formatDollar(tooltipItem.parsed.y);
                     },
                   },
                 },
@@ -100,7 +100,7 @@ export default function CustomChart({ coinId, days }) {
         <div className="d-flex justify-content-center">
           <div
             className="spinner-border"
-            style={{ width: '3rem', height: '3rem' }}
+            style={{ width: "3rem", height: "3rem" }}
             role="status"
           >
             <span className="sr-only">Loading...</span>
@@ -109,7 +109,7 @@ export default function CustomChart({ coinId, days }) {
       ) : null}
 
       <div>
-        <canvas id="chart" ref={ref}></canvas>
+        <canvas id="chart" ref={ref} className="text-white"></canvas>
       </div>
     </>
   );
